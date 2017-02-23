@@ -18,13 +18,19 @@ public class LoggedInUser  implements java.io.Serializable {
 
     public LoggedInUser() {
     }
-
+//loggedInTime, sessionId, solId, userName
 	
     public LoggedInUser(long logId, Date loggedInTime, String solId, String userName) {
         this.logId = logId;
         this.loggedInTime = loggedInTime;
         this.solId = solId;
         this.userName = userName;
+    }
+    public LoggedInUser(  Date loggedInTime, String sessionId, String solId, String userName) {
+       this.loggedInTime = loggedInTime;
+       this.sessionId = sessionId;
+       this.solId = solId;
+       this.userName = userName;
     }
     public LoggedInUser(long logId, Date loggedInTime, String sessionId, String solId, String userName) {
        this.logId = logId;
