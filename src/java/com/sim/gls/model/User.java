@@ -13,8 +13,8 @@ import java.util.Date;
  * @author Levi
  */
 public class User {
-     private long userId;
-     private RoleProfileTable roleProfileTable;
+      private long userId;
+     private Role role ;
      private Date acctExpyDate;
      private long acctInactiveDays;
      private Date disabledFromDate;
@@ -31,13 +31,13 @@ public class User {
      private String userName;
      private String userPw;
      private String userStatus;
-
+     String lastOper;
     public User() {
     }
 
-    public User(long userId, RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String solId, Date lastAccessTime, String lchgUserId, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
+    public User(long userId, Role role, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String solId, Date lastAccessTime, String lchgUserId, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
         this.userId = userId;
-        this.roleProfileTable = roleProfileTable;
+        this.role = role;
         this.acctExpyDate = acctExpyDate;
         this.acctInactiveDays = acctInactiveDays;
         this.disabledFromDate = disabledFromDate;
@@ -64,12 +64,12 @@ public class User {
         this.userId = userId;
     }
 
-    public RoleProfileTable getRoleProfileTable() {
-        return roleProfileTable;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleProfileTable(RoleProfileTable roleProfileTable) {
-        this.roleProfileTable = roleProfileTable;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Date getAcctExpyDate() {
@@ -199,6 +199,14 @@ public class User {
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
-     
-     
+
+    public String getLastOper() {
+        return lastOper;
+    }
+
+    public void setLastOper(String lastOper) {
+        this.lastOper = lastOper;
+    }
+
+        
 }

@@ -55,10 +55,11 @@ public class AccessService {
         return (RoleProfileTable) roleProfileTable.get(0);
     }
 
+   
     public User getUserByUserName(String userName) {
-
         UserCredsTbl user = getUserByUName(userName);
-        User theUser = new User(user.getUserId(), getRoleProfileTableByID(user.getRoleProfileTable().getRoleId()),
+        User theUser = new User(user.getUserId(),new Role(user.getRoleProfileTable().getBankId(), user.getRoleProfileTable().getDelFlg(), user.getRoleProfileTable().getEntityCreFlg(), user.getRoleProfileTable().getLchgTime(),
+                    user.getRoleProfileTable().getLchgUserId(), user.getRoleProfileTable().getRcreTime(), user.getRoleProfileTable().getRcreUserId(), user.getRoleProfileTable().getRoleDesc()),
                 user.getAcctExpyDate(), user.getAcctInactiveDays(),
                 user.getDisabledFromDate(), user.getDisabledUptoDate(), user.getSolId(), user.getLastAccessTime(), user.getLchgUserId(), user.getNewUserFlg(),
                 user.getNumPwdAttempts(), user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), user.getRoleProfileTable().getRoleId(),

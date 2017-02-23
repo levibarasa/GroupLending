@@ -31,6 +31,24 @@ public class UserCredsTblMod  implements java.io.Serializable {
     public UserCredsTblMod() {
     }
 
+    public UserCredsTblMod(RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw) {
+       this.roleProfileTable = roleProfileTable;
+       this.acctExpyDate = acctExpyDate;
+       this.acctInactiveDays = acctInactiveDays;
+       this.disabledFromDate = disabledFromDate;
+       this.disabledUptoDate = disabledUptoDate;
+       this.lastAccessTime = lastAccessTime;
+       this.lastOper = lastOper;
+       this.newUserFlg = newUserFlg;
+       this.numPwdAttempts = numPwdAttempts;
+       this.numPwdHistory = numPwdHistory;
+       this.pwExpyDate = pwExpyDate;
+       this.pwdHistory = pwdHistory;
+       this.rcreUserId = rcreUserId;
+       this.userId = userId;
+       this.userName = userName;
+       this.userPw = userPw;
+    }
     public UserCredsTblMod(long modId, RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw) {
        this.modId = modId;
        this.roleProfileTable = roleProfileTable;

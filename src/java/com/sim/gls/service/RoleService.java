@@ -132,7 +132,7 @@ public class RoleService {
     /*
     Creates A new Unverified Role
      */
-    public UnVerifiedRole addModRole(Role uRole, int roleId) {
+    public UnVerifiedRole addModRole(Role uRole, int roleId) { 
         RoleProfileTableMod created
                 = new RoleProfileTableMod(
                         uRole.getBankId(), uRole.getDelFlg(), uRole.getEntityCreFlg(), uRole.getLchgTime(),
@@ -179,7 +179,7 @@ public class RoleService {
     }
 
     public static void main(String[] args) {
-
+ 
         RoleService roleService = new RoleService();
         for (Object userObject : roleService.getAllRoles()) {
             Role tlUser = (Role) userObject;
