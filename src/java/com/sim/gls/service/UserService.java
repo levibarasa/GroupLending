@@ -103,6 +103,50 @@ public class UserService {
         return userId;
     }
 
+    public List<User> getUsers() {
+        List<User> allUsers = new LinkedList<>();
+        String query = "";
+        List<Object> users = crud.getObject("FROM UserCredsTbl");
+        for (Object userObject : users) {
+            UserCredsTbl userProf = (UserCredsTbl) userObject;
+
+            User user = new User(
+                    userProf.getUserId(),
+                    new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                            userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                    userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getSolId(), userProf.getLastAccessTime(),
+                    userProf.getLchgUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                    userProf.getPwdHistory(), userProf.getRoleId(), userProf.getUserName(), userProf.getUserPw(), userProf.getUserStatus()
+            );
+            allUsers.add(user);
+
+        }
+        return allUsers;
+    }
+
+    public List<User> getAllVerifiedUsers() {
+        List<User> allVerifiedUsers = new LinkedList<>();
+        List<User> userList = getUsers();
+
+        for (Object usersObject : userList) {
+            UserCredsTblMod credsTblMod = (UserCredsTblMod) usersObject;
+            List userCredsTblMod = crud.getObjectLazyLoad("from UserCredsTblMod where userId =" + credsTblMod.getUserId());
+            for (Object userModObject : userCredsTblMod) {
+                UserCredsTblMod userProf = (UserCredsTblMod) userModObject;
+                User user = new User(
+                        userProf.getUserId(),
+                        new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                                userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                        userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                        userProf.getRcreUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                        userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw(), userProf.getRcreUserId()
+                );
+                allVerifiedUsers.add(user);
+            }
+        }
+        return allVerifiedUsers;
+    }
+
     public static String generateUserKey(String username, String password) {
         return username.substring(0, 2) + password.substring(0, 4);
     }
