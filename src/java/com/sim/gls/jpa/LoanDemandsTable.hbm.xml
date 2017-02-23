@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LoanDemandsTable" optimistic-lock="version" schema="dbo" table="LOAN_DEMANDS_TABLE">
+    <id name="acid" type="string">
+      <column length="11" name="ACID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="dmdAmt" type="big_decimal">
+      <column name="DMD_AMT" precision="20" scale="4"/>
+    </property>
+    <property name="dmdDate" type="date">
+      <column length="10" name="DMD_DATE"/>
+    </property>
+    <property name="status" type="string">
+      <column length="2" name="STATUS"/>
+    </property>
+  </class>
+</hibernate-mapping>

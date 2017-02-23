@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LoggedInUser" optimistic-lock="version" schema="dbo" table="LOGGED_IN_USER">
+    <id name="logId" type="long">
+      <column name="LOG_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="loggedInTime" type="date">
+      <column length="10" name="LOGGED_IN_TIME" not-null="true"/>
+    </property>
+    <property name="sessionId" type="string">
+      <column length="200" name="SESSION_ID"/>
+    </property>
+    <property name="solId" type="string">
+      <column length="8" name="SOL_ID" not-null="true"/>
+    </property>
+    <property name="userName" type="string">
+      <column length="30" name="USER_NAME" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

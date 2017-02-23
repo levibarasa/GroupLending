@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LaAmortShdlTableReport" optimistic-lock="version" schema="dbo" table="LA_AMORT_SHDL_TABLE_REPORT">
+    <id name="acid" type="big_decimal">
+      <column name="ACID" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="adjInt" type="double">
+      <column name="ADJ_INT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="adjPrinc" type="double">
+      <column name="ADJ_PRINC" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="amortId" type="big_decimal">
+      <column name="AMORT_ID" not-null="true" scale="0"/>
+    </property>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="expcBal" type="double">
+      <column name="EXPC_BAL" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="flowDate" type="date">
+      <column length="10" name="FLOW_DATE" not-null="true"/>
+    </property>
+    <property name="intDmd" type="double">
+      <column name="INT_DMD" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="paymentIndex" type="long">
+      <column name="PAYMENT_INDEX" not-null="true" precision="18" scale="0"/>
+    </property>
+    <property name="princDmd" type="double">
+      <column name="PRINC_DMD" not-null="true" precision="53" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

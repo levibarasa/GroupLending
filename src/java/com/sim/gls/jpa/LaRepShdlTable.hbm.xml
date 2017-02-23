@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LaRepShdlTable" optimistic-lock="version" schema="dbo" table="LA_REP_SHDL_TABLE">
+    <id name="acid" type="string">
+      <column length="11" name="ACID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG"/>
+    </property>
+    <property name="entityCreFlg" type="string">
+      <column length="1" name="ENTITY_CRE_FLG"/>
+    </property>
+    <property name="flowAmt" type="big_decimal">
+      <column name="FLOW_AMT" precision="20" scale="0"/>
+    </property>
+    <property name="flowStartDate" type="date">
+      <column length="10" name="FLOW_START_DATE"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID"/>
+    </property>
+    <property name="nextDmdDate" type="date">
+      <column length="10" name="NEXT_DMD_DATE"/>
+    </property>
+    <property name="numOfFlows" type="big_decimal">
+      <column name="NUM_OF_FLOWS" scale="0"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID"/>
+    </property>
+    <property name="shdlId" type="big_decimal">
+      <column name="SHDL_ID" scale="0"/>
+    </property>
+    <property name="solId" type="big_decimal">
+      <column name="SOL_ID" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

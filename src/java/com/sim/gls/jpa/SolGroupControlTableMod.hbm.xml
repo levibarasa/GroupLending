@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.SolGroupControlTableMod" optimistic-lock="version" schema="dbo" table="SOL_GROUP_CONTROL_TABLE_MOD">
+    <id name="solGroupId" type="long">
+      <column name="SOL_GROUP_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="modId" type="long">
+      <column name="MOD_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="dbStatDate" type="date">
+      <column length="10" name="DB_STAT_DATE" not-null="true"/>
+    </property>
+    <property name="dcClsDate" type="date">
+      <column length="10" name="DC_CLS_DATE" not-null="true"/>
+    </property>
+    <property name="dcClsFlg" type="string">
+      <column length="1" name="DC_CLS_FLG" not-null="true"/>
+    </property>
+    <property name="defNumOfDaysInMth" type="long">
+      <column name="DEF_NUM_OF_DAYS_IN_MTH" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="groupDesc" type="string">
+      <column length="40" name="GROUP_DESC" not-null="true"/>
+    </property>
+    <property name="homeCntryCode" type="string">
+      <column length="5" name="HOME_CNTRY_CODE" not-null="true"/>
+    </property>
+    <property name="homeCrncyCode" type="string">
+      <column length="3" name="HOME_CRNCY_CODE" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="numOfBackDaysAllowed" type="long">
+      <column name="NUM_OF_BACK_DAYS_ALLOWED" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="numOfFutureDaysAllowed" type="long">
+      <column name="NUM_OF_FUTURE_DAYS_ALLOWED" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

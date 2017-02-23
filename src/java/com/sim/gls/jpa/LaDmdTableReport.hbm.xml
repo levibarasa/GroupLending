@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LaDmdTableReport" optimistic-lock="version" schema="dbo" table="LA_DMD_TABLE_REPORT">
+    <id name="acid" type="string">
+      <column length="11" name="ACID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="dmdAmt" type="big_decimal">
+      <column name="DMD_AMT" not-null="true" precision="20" scale="0"/>
+    </property>
+    <property name="dmdDate" type="date">
+      <column length="10" name="DMD_DATE" not-null="true"/>
+    </property>
+    <property name="dmdEffDate" type="date">
+      <column length="10" name="DMD_EFF_DATE" not-null="true"/>
+    </property>
+    <property name="dmdFlowId" type="string">
+      <column length="5" name="DMD_FLOW_ID" not-null="true"/>
+    </property>
+    <property name="dmdId" type="big_decimal">
+      <column name="DMD_ID" not-null="true" scale="0"/>
+    </property>
+    <property name="dmdOvduDate" type="date">
+      <column length="10" name="DMD_OVDU_DATE" not-null="true"/>
+    </property>
+    <property name="lastAdjDate" type="date">
+      <column length="10" name="LAST_ADJ_DATE" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="ldFreqType" type="string">
+      <column length="1" name="LD_FREQ_TYPE" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="totAdjAmt" type="big_decimal">
+      <column name="TOT_ADJ_AMT" not-null="true" precision="20" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

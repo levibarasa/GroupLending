@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.UserCredsTbl" optimistic-lock="version" schema="dbo" table="USER_CREDS_TBL">
+    <id name="userId" type="long">
+      <column name="USER_ID" precision="10" scale="0"/>
+      <generator class="foreign">
+        <param name="property">roleProfileTable</param>
+      </generator>
+    </id>
+    <one-to-one class="com.sim.gls.jpa.RoleProfileTable" constrained="true" name="roleProfileTable"/>
+    <property name="acctExpyDate" type="date">
+      <column length="10" name="ACCT_EXPY_DATE" not-null="true"/>
+    </property>
+    <property name="acctInactiveDays" type="long">
+      <column name="ACCT_INACTIVE_DAYS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="disabledFromDate" type="date">
+      <column length="10" name="DISABLED_FROM_DATE" not-null="true"/>
+    </property>
+    <property name="disabledUptoDate" type="date">
+      <column length="10" name="DISABLED_UPTO_DATE" not-null="true"/>
+    </property>
+    <property name="solId" type="string">
+      <column length="20" name="SOL_ID"/>
+    </property>
+    <property name="lastAccessTime" type="date">
+      <column length="10" name="LAST_ACCESS_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID"/>
+    </property>
+    <property name="newUserFlg" type="string">
+      <column length="1" name="NEW_USER_FLG" not-null="true"/>
+    </property>
+    <property name="numPwdAttempts" type="long">
+      <column name="NUM_PWD_ATTEMPTS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="numPwdHistory" type="long">
+      <column name="NUM_PWD_HISTORY" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="pwExpyDate" type="date">
+      <column length="10" name="PW_EXPY_DATE" not-null="true"/>
+    </property>
+    <property name="pwdHistory" type="string">
+      <column length="3072" name="PWD_HISTORY" not-null="true"/>
+    </property>
+    <property name="roleId" type="long">
+      <column name="ROLE_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="userName" type="string">
+      <column length="30" name="USER_NAME" not-null="true"/>
+    </property>
+    <property name="userPw" type="string">
+      <column length="100" name="USER_PW" not-null="true"/>
+    </property>
+    <property name="userStatus" type="string">
+      <column length="2" name="USER_STATUS" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

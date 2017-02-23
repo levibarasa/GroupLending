@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.LaTranDetailTable" optimistic-lock="version" schema="dbo" table="LA_TRAN_DETAIL_TABLE">
+    <id name="tranId" type="big_decimal">
+      <column name="TRAN_ID" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="accountNo" type="big_decimal">
+      <column name="ACCOUNT_NO" not-null="true" scale="0"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="subTranType" type="string">
+      <column length="2" name="SUB_TRAN_TYPE" not-null="true"/>
+    </property>
+    <property name="tranAmt" type="big_decimal">
+      <column name="TRAN_AMT" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="tranDate" type="date">
+      <column length="10" name="TRAN_DATE" not-null="true"/>
+    </property>
+    <property name="valueDate" type="date">
+      <column length="10" name="VALUE_DATE" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

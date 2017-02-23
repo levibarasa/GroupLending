@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://127.0.0.1\SQL2012:50606;databaseName=GLS</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">pass1234</property>
+    <mapping resource="com/sim/gls/jpa/Categories.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LaTranDetailTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/HistoryTransactionsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RoleProfileTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/GroupsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/ServiceOutletTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RegionsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/FinacleUsers.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/GeneralAcctMastTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/GeneralAcctMastTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/CountryCodes.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RoleCrncyLimitTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RoleProfileTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/ResMapping.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RoleCrncyLimitTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/UserCredsTblMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/RegionsTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/GeneralAcctMastAuditTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LoanDetailsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/FinacleSystem.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/SubGrpTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LoanDemandsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/ResMappingMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LaRepShdlTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/GroupsTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/CurrencyCodes.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/UserCredsTbl.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LaDmdTableReport.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LoggedInUser.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/SubGrpTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/Resources.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/LaAmortShdlTableReport.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/DailyTransactionsTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/ServiceOutletTable.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/SolGroupControlTableMod.hbm.xml"/>
+    <mapping resource="com/sim/gls/jpa/SolGroupControlTable.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

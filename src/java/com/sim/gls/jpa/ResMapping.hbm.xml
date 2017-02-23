@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.ResMapping" optimistic-lock="version" schema="dbo" table="RES_MAPPING">
+    <id name="mapId" type="long">
+      <column name="MAP_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="mopId" type="string">
+      <column length="10" name="MOP_ID" not-null="true"/>
+    </property>
+    <property name="mopText" type="string">
+      <column length="60" name="MOP_TEXT" not-null="true"/>
+    </property>
+    <property name="mopUrl" type="string">
+      <column length="100" name="MOP_URL" not-null="true"/>
+    </property>
+    <property name="rcreRep" type="string">
+      <column length="20" name="RCRE_REP"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUser" type="string">
+      <column length="30" name="RCRE_USER" not-null="true"/>
+    </property>
+    <property name="resId" type="long">
+      <column name="RES_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="roleName" type="string">
+      <column length="50" name="ROLE_NAME" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.RoleCrncyLimitTableMod" optimistic-lock="version" schema="dbo" table="ROLE_CRNCY_LIMIT_TABLE_MOD">
+    <id name="modId" type="long">
+      <column name="MOD_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="crncyCode" type="string">
+      <column length="3" name="CRNCY_CODE" not-null="true"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="lchgDate" type="date">
+      <column length="10" name="LCHG_DATE" not-null="true"/>
+    </property>
+    <property name="limitId" type="long">
+      <column name="LIMIT_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="roleId" type="string">
+      <column length="15" name="ROLE_ID" not-null="true"/>
+    </property>
+    <property name="userCashDrLim" type="double">
+      <column name="USER_CASH_DR_LIM" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="userIntersolCashDrLimit" type="double">
+      <column name="USER_INTERSOL_CASH_DR_LIMIT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="userIntersolXferDrLimit" type="double">
+      <column name="USER_INTERSOL_XFER_DR_LIMIT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="userXferDrLim" type="double">
+      <column name="USER_XFER_DR_LIM" not-null="true" precision="53" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

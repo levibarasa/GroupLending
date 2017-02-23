@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.Categories" optimistic-lock="version" schema="dbo" table="CATEGORIES">
+    <id name="categoryid" type="int">
+      <column name="CATEGORYID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="bocreatedby" type="string">
+      <column length="30" name="BOCREATEDBY" not-null="true"/>
+    </property>
+    <property name="bodatecreated" type="date">
+      <column length="10" name="BODATECREATED" not-null="true"/>
+    </property>
+    <property name="bodatemodified" type="date">
+      <column length="10" name="BODATEMODIFIED" not-null="true"/>
+    </property>
+    <property name="bomodifiedby" type="string">
+      <column name="BOMODIFIEDBY" not-null="true"/>
+    </property>
+    <property name="categorycode" type="string">
+      <column length="50" name="CATEGORYCODE" not-null="true"/>
+    </property>
+    <property name="categorytype" type="string">
+      <column length="30" name="CATEGORYTYPE" not-null="true"/>
+    </property>
+    <property name="categoryvalue" type="string">
+      <column length="200" name="CATEGORYVALUE" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

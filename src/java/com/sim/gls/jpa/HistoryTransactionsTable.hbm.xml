@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.HistoryTransactionsTable" optimistic-lock="version" schema="dbo" table="HISTORY_TRANSACTIONS_TABLE">
+    <id name="tranId" type="long">
+      <column name="TRAN_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="foracid" type="string">
+      <column length="20" name="FORACID"/>
+    </property>
+    <property name="bankTranId" type="string">
+      <column name="BANK_TRAN_ID"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="2" name="DEL_FLG"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="20" name="LCHG_USER_ID"/>
+    </property>
+    <property name="pstdFlg" type="string">
+      <column length="2" name="PSTD_FLG"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="20" name="RCRE_USER_ID"/>
+    </property>
+    <property name="subGroupCode" type="string">
+      <column name="SUB_GROUP_CODE"/>
+    </property>
+    <property name="tranAmt" type="big_decimal">
+      <column name="TRAN_AMT" precision="20" scale="4"/>
+    </property>
+    <property name="tranDate" type="date">
+      <column length="10" name="TRAN_DATE"/>
+    </property>
+    <property name="tranParticulars" type="string">
+      <column length="60" name="TRAN_PARTICULARS"/>
+    </property>
+    <property name="tranType" type="string">
+      <column length="2" name="TRAN_TYPE"/>
+    </property>
+  </class>
+</hibernate-mapping>

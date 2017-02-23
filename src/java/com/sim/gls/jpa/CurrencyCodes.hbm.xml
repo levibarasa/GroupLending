@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.CurrencyCodes" optimistic-lock="version" schema="dbo" table="CURRENCY_CODES">
+    <id name="currencyId" type="int">
+      <column name="CURRENCY_ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="currencyCode" type="string">
+      <column length="3" name="CURRENCY_CODE" not-null="true"/>
+    </property>
+    <property name="curerncyName" type="string">
+      <column length="50" name="CURERNCY_NAME" not-null="true"/>
+    </property>
+    <property name="enabledFlg" type="string">
+      <column length="1" name="ENABLED_FLG" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

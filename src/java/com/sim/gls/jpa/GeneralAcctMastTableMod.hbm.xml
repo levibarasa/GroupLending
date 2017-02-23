@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.GeneralAcctMastTableMod" optimistic-lock="version" schema="dbo" table="GENERAL_ACCT_MAST_TABLE_MOD">
+    <id name="modId" type="long">
+      <column name="MOD_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="acctCrncyCode" type="string">
+      <column length="3" name="ACCT_CRNCY_CODE" not-null="true"/>
+    </property>
+    <property name="acctMgrUserId" type="string">
+      <column length="15" name="ACCT_MGR_USER_ID"/>
+    </property>
+    <property name="acctName" type="string">
+      <column length="80" name="ACCT_NAME" not-null="true"/>
+    </property>
+    <property name="acctOpnDate" type="date">
+      <column length="10" name="ACCT_OPN_DATE" not-null="true"/>
+    </property>
+    <property name="acctOwnership" type="string">
+      <column length="1" name="ACCT_OWNERSHIP" not-null="true"/>
+    </property>
+    <property name="creditRating" type="string">
+      <column length="2" name="CREDIT_RATING" not-null="true"/>
+    </property>
+    <property name="acid" type="string">
+      <column length="20" name="ACID" not-null="true"/>
+    </property>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID"/>
+    </property>
+    <property name="clrBalAmt" type="double">
+      <column name="CLR_BAL_AMT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="custId" type="long">
+      <column name="CUST_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="drwngPower" type="double">
+      <column name="DRWNG_POWER" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="entityCreFlg" type="string">
+      <column length="1" name="ENTITY_CRE_FLG" not-null="true"/>
+    </property>
+    <property name="foracid" type="string">
+      <column length="16" name="FORACID" not-null="true"/>
+    </property>
+    <property name="lastModifiedDate" type="date">
+      <column length="10" name="LAST_MODIFIED_DATE" not-null="true"/>
+    </property>
+    <property name="lastOper" type="string">
+      <column length="1" name="LAST_OPER" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="15" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="lienAmt" type="double">
+      <column name="LIEN_AMT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="15" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="sanctLim" type="double">
+      <column name="SANCT_LIM" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="schmCode" type="string">
+      <column length="5" name="SCHM_CODE" not-null="true"/>
+    </property>
+    <property name="schmType" type="string">
+      <column length="3" name="SCHM_TYPE" not-null="true"/>
+    </property>
+    <property name="solId" type="string">
+      <column length="8" name="SOL_ID" not-null="true"/>
+    </property>
+    <property name="subGroupCode" type="string">
+      <column length="10" name="SUB_GROUP_CODE" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

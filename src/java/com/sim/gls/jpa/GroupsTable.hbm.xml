@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.GroupsTable" optimistic-lock="version" schema="dbo" table="GROUPS_TABLE">
+    <id name="groupId" type="long">
+      <column name="GROUP_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="branchName" type="string">
+      <column length="50" name="BRANCH_NAME" not-null="true"/>
+    </property>
+    <property name="countryCode" type="string">
+      <column length="2" name="COUNTRY_CODE" not-null="true"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="firstMeetDate" type="date">
+      <column length="10" name="FIRST_MEET_DATE" not-null="true"/>
+    </property>
+    <property name="formationDate" type="date">
+      <column length="10" name="FORMATION_DATE" not-null="true"/>
+    </property>
+    <property name="gpChair" type="string">
+      <column length="50" name="GP_CHAIR"/>
+    </property>
+    <property name="gpRegion" type="string">
+      <column length="50" name="GP_REGION" not-null="true"/>
+    </property>
+    <property name="gpSecretary" type="string">
+      <column length="50" name="GP_SECRETARY"/>
+    </property>
+    <property name="gpStatus" type="string">
+      <column length="20" name="GP_STATUS" not-null="true"/>
+    </property>
+    <property name="gpStatusCode" type="string">
+      <column length="20" name="GP_STATUS_CODE" not-null="true"/>
+    </property>
+    <property name="gpTreasurer" type="string">
+      <column length="50" name="GP_TREASURER"/>
+    </property>
+    <property name="groupAddress" type="string">
+      <column length="50" name="GROUP_ADDRESS" not-null="true"/>
+    </property>
+    <property name="groupCenter" type="string">
+      <column length="50" name="GROUP_CENTER" not-null="true"/>
+    </property>
+    <property name="groupCode" type="string">
+      <column length="10" name="GROUP_CODE" not-null="true"/>
+    </property>
+    <property name="groupLoans" type="double">
+      <column name="GROUP_LOANS" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="groupName" type="string">
+      <column length="50" name="GROUP_NAME" not-null="true"/>
+    </property>
+    <property name="groupPhone" type="string">
+      <column length="20" name="GROUP_PHONE" not-null="true"/>
+    </property>
+    <property name="groupType" type="string">
+      <column length="2" name="GROUP_TYPE" not-null="true"/>
+    </property>
+    <property name="groupVillage" type="string">
+      <column length="50" name="GROUP_VILLAGE" not-null="true"/>
+    </property>
+    <property name="grpMgrId" type="string">
+      <column length="30" name="GRP_MGR_ID" not-null="true"/>
+    </property>
+    <property name="grpRegNo" type="string">
+      <column length="30" name="GRP_REG_NO" not-null="true"/>
+    </property>
+    <property name="lchgDate" type="date">
+      <column length="10" name="LCHG_DATE" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="loanAccounts" type="long">
+      <column name="LOAN_ACCOUNTS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="maxAllowedMembers" type="long">
+      <column name="MAX_ALLOWED_MEMBERS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="maxAllowedSubGrps" type="long">
+      <column name="MAX_ALLOWED_SUB_GRPS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="meetFrequency" type="string">
+      <column length="10" name="MEET_FREQUENCY" not-null="true"/>
+    </property>
+    <property name="meetPlace" type="string">
+      <column length="50" name="MEET_PLACE" not-null="true"/>
+    </property>
+    <property name="meetTime" type="string">
+      <column length="20" name="MEET_TIME"/>
+    </property>
+    <property name="noOfMembers" type="long">
+      <column name="NO_OF_MEMBERS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="noOfSubGrps" type="long">
+      <column name="NO_OF_SUB_GRPS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="nxtMeetDate" type="date">
+      <column length="10" name="NXT_MEET_DATE" not-null="true"/>
+    </property>
+    <property name="outstandingBal" type="double">
+      <column name="OUTSTANDING_BAL" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="savingAccounts" type="long">
+      <column name="SAVING_ACCOUNTS" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="savingsAmt" type="double">
+      <column name="SAVINGS_AMT" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="solId" type="long">
+      <column name="SOL_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="subGrpTables" table="SUB_GRP_TABLE">
+      <key>
+        <column name="GROUP_ID" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="com.sim.gls.jpa.SubGrpTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

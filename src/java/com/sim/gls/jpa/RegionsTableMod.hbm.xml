@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.RegionsTableMod" optimistic-lock="version" schema="dbo" table="REGIONS_TABLE_MOD">
+    <id name="modId" type="long">
+      <column name="MOD_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="countryCode" type="string">
+      <column length="2" name="COUNTRY_CODE" not-null="true"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="regionId" type="long">
+      <column name="REGION_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="regionName" type="string">
+      <column length="30" name="REGION_NAME" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.RoleProfileTableMod" optimistic-lock="version" schema="dbo" table="ROLE_PROFILE_TABLE_MOD">
+    <id name="modId" type="long">
+      <column name="MOD_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="entityCreFlg" type="string">
+      <column length="1" name="ENTITY_CRE_FLG" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="roleDesc" type="string">
+      <column length="30" name="ROLE_DESC" not-null="true"/>
+    </property>
+    <property name="roleId" type="long">
+      <column name="ROLE_ID" not-null="true" precision="10" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

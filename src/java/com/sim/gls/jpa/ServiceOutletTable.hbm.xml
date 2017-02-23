@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2017 10:54:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="GLS" name="com.sim.gls.jpa.ServiceOutletTable" optimistic-lock="version" schema="dbo" table="SERVICE_OUTLET_TABLE">
+    <id name="solId" type="long">
+      <column name="SOL_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="addr1" type="string">
+      <column length="45" name="ADDR_1"/>
+    </property>
+    <property name="bankId" type="string">
+      <column length="8" name="BANK_ID" not-null="true"/>
+    </property>
+    <property name="cntryCode" type="string">
+      <column length="5" name="CNTRY_CODE"/>
+    </property>
+    <property name="delFlg" type="string">
+      <column length="1" name="DEL_FLG" not-null="true"/>
+    </property>
+    <property name="homeCrncyCode" type="string">
+      <column length="3" name="HOME_CRNCY_CODE" not-null="true"/>
+    </property>
+    <property name="lchgTime" type="date">
+      <column length="10" name="LCHG_TIME" not-null="true"/>
+    </property>
+    <property name="lchgUserId" type="string">
+      <column length="30" name="LCHG_USER_ID" not-null="true"/>
+    </property>
+    <property name="rcreTime" type="date">
+      <column length="10" name="RCRE_TIME" not-null="true"/>
+    </property>
+    <property name="rcreUserId" type="string">
+      <column length="30" name="RCRE_USER_ID" not-null="true"/>
+    </property>
+    <property name="solBodDate" type="date">
+      <column length="10" name="SOL_BOD_DATE"/>
+    </property>
+    <property name="solClsDate" type="date">
+      <column length="10" name="SOL_CLS_DATE"/>
+    </property>
+    <property name="solClsFlg" type="string">
+      <column length="1" name="SOL_CLS_FLG"/>
+    </property>
+    <property name="solDesc" type="string">
+      <column length="132" name="SOL_DESC"/>
+    </property>
+    <property name="solEodStatus" type="string">
+      <column length="1" name="SOL_EOD_STATUS" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
