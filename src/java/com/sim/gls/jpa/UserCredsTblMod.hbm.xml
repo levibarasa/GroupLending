@@ -55,5 +55,8 @@
     <property name="userPw" type="string">
       <column length="100" name="USER_PW" not-null="true"/>
     </property>
+     <property name="Active" type="string">
+      <column length="2" name="Active" not-null="true"/>
+    </property>
   </class>
 </hibernate-mapping>

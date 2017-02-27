@@ -31,7 +31,8 @@ public class UserCredsTbl  implements java.io.Serializable {
 
     public UserCredsTbl() {
     }
-public UserCredsTbl( Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String solId, Date lastAccessTime, String lchgUserId, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
+    
+    public UserCredsTbl( Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String solId, Date lastAccessTime, String lchgUserId, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
        this.acctExpyDate = acctExpyDate;
        this.acctInactiveDays = acctInactiveDays;
        this.disabledFromDate = disabledFromDate;
@@ -49,8 +50,28 @@ public UserCredsTbl( Date acctExpyDate, long acctInactiveDays, Date disabledFrom
        this.userPw = userPw;
        this.userStatus = userStatus;
     }
+public UserCredsTbl(long userId, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String solId, Date lastAccessTime, String lchgUserId, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
+       this.userId = userId;
+    this.acctExpyDate = acctExpyDate;
+       this.acctInactiveDays = acctInactiveDays;
+       this.disabledFromDate = disabledFromDate;
+       this.disabledUptoDate = disabledUptoDate;
+       this.solId = solId;
+       this.lastAccessTime = lastAccessTime;
+       this.lchgUserId = lchgUserId;
+       this.newUserFlg = newUserFlg;
+       this.numPwdAttempts = numPwdAttempts;
+       this.numPwdHistory = numPwdHistory;
+       this.pwExpyDate = pwExpyDate;
+       this.pwdHistory = pwdHistory;
+       this.roleId = roleId;
+       this.userName = userName;
+       this.userPw = userPw;
+       this.userStatus = userStatus;
+    } 
 	
-    public UserCredsTbl(  Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
+	
+    public UserCredsTbl( Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw, String userStatus) {
         this.acctExpyDate = acctExpyDate;
         this.acctInactiveDays = acctInactiveDays;
         this.disabledFromDate = disabledFromDate;

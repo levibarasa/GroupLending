@@ -12,6 +12,7 @@ import java.util.Date;
  *
  * @author Levi
  */
+
 public class User {
       private long userId;
      private Role role ;
@@ -54,6 +55,26 @@ public class User {
         this.userName = userName;
         this.userPw = userPw;
         this.userStatus = userStatus;
+    }
+
+    public User(long userId, Role role, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, String bankId, Date lastAccessTime, long userId0, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, long roleId, String userName, String userPw) {
+       this.userId = userId;
+        this.role = role;
+        this.acctExpyDate = acctExpyDate;
+        this.acctInactiveDays = acctInactiveDays;
+        this.disabledFromDate = disabledFromDate;
+        this.disabledUptoDate = disabledUptoDate;
+        this.solId = solId;
+        this.lastAccessTime = lastAccessTime;
+        this.lchgUserId = lchgUserId;
+        this.newUserFlg = newUserFlg;
+        this.numPwdAttempts = numPwdAttempts;
+        this.numPwdHistory = numPwdHistory;
+        this.pwExpyDate = pwExpyDate;
+        this.pwdHistory = pwdHistory;
+        this.roleId = roleId;
+        this.userName = userName;
+        this.userPw = userPw;   
     }
 
     public long getUserId() {

@@ -27,11 +27,11 @@ public class UserCredsTblMod  implements java.io.Serializable {
      private long userId;
      private String userName;
      private String userPw;
-
+     private boolean  active;
     public UserCredsTblMod() {
     }
 
-    public UserCredsTblMod(RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw) {
+    public UserCredsTblMod(RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw,boolean  active) {
        this.roleProfileTable = roleProfileTable;
        this.acctExpyDate = acctExpyDate;
        this.acctInactiveDays = acctInactiveDays;
@@ -48,8 +48,9 @@ public class UserCredsTblMod  implements java.io.Serializable {
        this.userId = userId;
        this.userName = userName;
        this.userPw = userPw;
+       this.active = active;
     }
-    public UserCredsTblMod(long modId, RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw) {
+    public UserCredsTblMod(long modId, RoleProfileTable roleProfileTable, Date acctExpyDate, long acctInactiveDays, Date disabledFromDate, Date disabledUptoDate, Date lastAccessTime, String lastOper, String newUserFlg, long numPwdAttempts, long numPwdHistory, Date pwExpyDate, String pwdHistory, String rcreUserId, long userId, String userName, String userPw,boolean  active) {
        this.modId = modId;
        this.roleProfileTable = roleProfileTable;
        this.acctExpyDate = acctExpyDate;
@@ -67,6 +68,7 @@ public class UserCredsTblMod  implements java.io.Serializable {
        this.userId = userId;
        this.userName = userName;
        this.userPw = userPw;
+       this.active = active;
     }
    
     public long getModId() {
@@ -188,6 +190,16 @@ public class UserCredsTblMod  implements java.io.Serializable {
     public void setUserPw(String userPw) {
         this.userPw = userPw;
     }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+     
 
 
 

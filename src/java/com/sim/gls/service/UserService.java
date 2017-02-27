@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sim.gls.service;
 
 import com.sim.gls.jpa.RoleProfileTable;
 import com.sim.gls.jpa.UserCredsTbl;
 import com.sim.gls.jpa.UserCredsTblMod;
 import com.sim.gls.manager.CRUD;
+import com.sim.gls.manager.HibernateUtil;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Role;
 import com.sim.gls.model.User;
+import com.sim.gls.prop.GlsProp;
 import com.sim.gls.security.Encode;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import org.hibernate.Criteria;
+import org.hibernate.ScrollableResults;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -92,7 +99,7 @@ public class UserService {
         UserCredsTblMod creatUserMod
                 = new UserCredsTblMod(roleProf, user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
                         user.getDisabledUptoDate(), user.getLastAccessTime(), user.getLastOper(), user.getNewUserFlg(), user.getNumPwdAttempts(),
-                        user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), "U", userId, user.getUserName(), EncodeUserPassword(user.getUserName(), user.getUserPw()));
+                        user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), "U", userId, user.getUserName(), EncodeUserPassword(user.getUserName(), user.getUserPw()), true);
         crud.save(user);
         return 0;
     }
@@ -103,10 +110,32 @@ public class UserService {
         return userId;
     }
 
-    public List<User> getUsers() {
-        List<User> allUsers = new LinkedList<>();
+    public List<User> getAllVerifiedUsers() {
+        List<User> allVerifiedUsers = new LinkedList<>();
         String query = "";
-        List<Object> users = crud.getObject("FROM UserCredsTbl");
+        List userCredsTblMod = crud.getObjectLazyLoad("from UserCredsTblMod where active =" + true);
+        for (Object userObject : userCredsTblMod) {
+            UserCredsTblMod userProf = (UserCredsTblMod) userObject;
+
+            User user = new User(
+                    userProf.getUserId(),
+                    new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                            userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                    userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                    userProf.getUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                    userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw()
+            );
+            allVerifiedUsers.add(user);
+
+        }
+        return allVerifiedUsers;
+    }
+
+    public List<User> getAllUsers(String uname) {
+        List<User> allUsers = new LinkedList<>();
+        String query = "from UserCredsTbl where userName like '%" + uname + "%'"
+                + "or userStatus like '%" + "A" + "%'";
+        List<Object> users = crud.getObject(query);
         for (Object userObject : users) {
             UserCredsTbl userProf = (UserCredsTbl) userObject;
 
@@ -124,27 +153,201 @@ public class UserService {
         return allUsers;
     }
 
-    public List<User> getAllVerifiedUsers() {
+    public List<User> getUnverifiedUsers(String username) {
         List<User> allVerifiedUsers = new LinkedList<>();
-        List<User> userList = getUsers();
 
-        for (Object usersObject : userList) {
-            UserCredsTblMod credsTblMod = (UserCredsTblMod) usersObject;
-            List userCredsTblMod = crud.getObjectLazyLoad("from UserCredsTblMod where userId =" + credsTblMod.getUserId());
-            for (Object userModObject : userCredsTblMod) {
-                UserCredsTblMod userProf = (UserCredsTblMod) userModObject;
-                User user = new User(
-                        userProf.getUserId(),
-                        new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
-                                userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
-                        userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
-                        userProf.getRcreUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
-                        userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw(), userProf.getRcreUserId()
-                );
-                allVerifiedUsers.add(user);
-            }
+        String query = "from UserCredsTblMod where userName like '%" + username + "%'"
+                + "or active like '%" + false + "%'";
+
+        List userCredsTblMod = crud.getObjectLazyLoad(query);
+        for (Object userObject : userCredsTblMod) {
+            UserCredsTblMod userProf = (UserCredsTblMod) userObject;
+
+            User user = new User(
+                    userProf.getUserId(),
+                    new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                            userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                    userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                    userProf.getUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                    userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw()
+            );
+            allVerifiedUsers.add(user);
+
         }
         return allVerifiedUsers;
+    }
+
+    public List<User> getUnverifiedUsers() {
+        List<User> allVerifiedUsers = new LinkedList<>();
+        List userCredsTblMod = crud.getObjectLazyLoad("from UserCredsTblMod where active =" + false);
+        for (Object userObject : userCredsTblMod) {
+            UserCredsTblMod userProf = (UserCredsTblMod) userObject;
+
+            User user = new User(
+                    userProf.getUserId(),
+                    new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                            userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                    userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                    userProf.getUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                    userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw()
+            );
+            allVerifiedUsers.add(user);
+
+        }
+        return allVerifiedUsers;
+    }
+
+    public User getUserDetails(String in) {
+        int userid = Integer.parseInt(in);
+        List<UserCredsTbl> existing = crud.findByPrimaryKey(userid, "FROM UserCredsTbl where id =:pk");
+
+        User userDetail = null;
+        if (existing.size() > 0) {
+            UserCredsTbl userProf = existing.get(0);
+            userDetail = new User(
+                    userProf.getUserId(),
+                    new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                            userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                    userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                    userProf.getUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                    userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw()
+            );
+        }
+        return userDetail;
+    }
+
+    public String lastOper(String in) {
+        int userid = Integer.parseInt(in);
+        String res = "";
+        User user = getUserDetails(in);
+
+        res = user.getLastOper();
+
+        // UserCredsTblMod list = getuserModDetails(userid);
+        // res = list.getLastOper();
+        return res;
+    }
+
+    public static void verifyUser(int userId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(UserCredsTblMod.class);
+            cr.add(Restrictions.eq("userId", userId));
+            int count = 0;
+            ScrollableResults items = cr.scroll();
+            while (items.next()) {
+                UserCredsTblMod user = (UserCredsTblMod) items.get(0);
+                session.delete(user);
+                if (++count % 100 == 0) {
+                    session.flush();
+                    session.clear();
+                }
+            }
+            tx.commit();
+        } catch (Exception asd) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+
+    }
+
+    public static ArrayList getUsersList() {
+        ArrayList arr = new ArrayList();
+        GlsProp pr = new GlsProp();
+        String uploadFilepath = pr.getDBProperty().getProperty("user.file");
+        String line;
+        try {
+            FileInputStream fs = new FileInputStream(uploadFilepath);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+            String[] split;
+            while ((line = br.readLine()) != null) {
+                split = line.split("\\|");
+                ArrayList one = new ArrayList();
+                one.add(split[0]);
+                one.add(split[1]);
+                one.add(split[2]);
+                arr.add(one);
+            }
+            fs.close();
+            br.close();
+        } catch (Exception asd) {
+        }
+        return arr;
+    }
+
+    public static void deleteUser(int userId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(UserCredsTbl.class);
+            cr.add(Restrictions.eq("userId", userId));
+            UserCredsTbl user = (UserCredsTbl) cr.uniqueResult();
+            user.setUserStatus("D");
+            tx.commit();
+        } catch (Exception asd) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    public void modifyUser(User user) {
+        List<UserCredsTbl> existing = crud.findByPrimaryKey(user.getUserId(), "from UserCredsTbl where id =:pk ");
+        UserCredsTbl updated = new UserCredsTbl( user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
+                user.getDisabledUptoDate(), user.getLastAccessTime(), user.getNewUserFlg(), user.getNumPwdAttempts(),
+                user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), user.getRole().getRoleId(),
+                user.getUserName(), EncodeUserPassword(user.getUserName(), user.getUserPw()), user.getUserStatus());
+        crud.saveOrUpdate(user);
+
+    }
+
+
+    public static void markUserUnverified(int userName, String userStatus) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(UserCredsTbl.class);
+            cr.add(Restrictions.eq("userId", userName));
+            UserCredsTbl user = (UserCredsTbl) cr.uniqueResult();
+            user.setUserStatus(userStatus);
+            user.setNewUserFlg("Y");
+            tx.commit();
+        } catch (Exception asd) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    public static boolean userExistsInMod(String userName) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        long count = 0;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(UserCredsTblMod.class);
+            cr.add(Restrictions.eq("userName", userName));
+            count = (long) cr.setProjection(Projections.rowCount()).uniqueResult();
+            tx.commit();
+        } catch (Exception asd) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return count > 0;
     }
 
     public static String generateUserKey(String username, String password) {
@@ -165,4 +368,11 @@ public class UserService {
         return enc.decrypt(encpass);
     }
 
+    public static void main(String[] args) {
+        UserService roleService = new UserService();
+        for (Object userObject : roleService.getAllVerifiedUsers()) {
+            User tlUser = (User) userObject;
+            System.out.println(tlUser.getUserId() + " " + tlUser.getUserName() + " " + tlUser.getPwdHistory() + " " + tlUser.getNumPwdAttempts());
+        }
+    }
 }

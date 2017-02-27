@@ -34,7 +34,7 @@ public class AccessService {
      */
     public boolean userExists(String userName, String userPw) {
         String qr = "from UserCredsTbl where userName like '%" + userName + "%'"
-                + "or userPw like '%" + userPw + "%'";
+                + "or userName like '%" + userName + "%'";
         List userList = crud.getObject(qr);
 
         if (userList.size() > 0) {
@@ -48,6 +48,9 @@ public class AccessService {
         List userCredsTbl = crud.getObjectLazyLoad("from UserCredsTbl where userName =" + userName);
         return (UserCredsTbl) userCredsTbl.get(0);
     }
+    
+    
+    
 
     public RoleProfileTable getRoleProfileTableByID(long id) {
         List roleProfileTable = crud.getObjectLazyLoad("from RoleProfileTable where roleId =" + id);

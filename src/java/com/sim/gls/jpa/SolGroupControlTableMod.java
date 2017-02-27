@@ -50,6 +50,26 @@ public class SolGroupControlTableMod  implements java.io.Serializable {
        this.rcreTime = rcreTime;
        this.rcreUserId = rcreUserId;
     }
+
+    public SolGroupControlTableMod(String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, int numOfBackDaysAllowed, int numOfFutureDaysAllowed, Date rcreTime, String rcreUserId, int solGroupId) {
+       this.solGroupId = solGroupId;
+       this.modId = modId;
+       this.bankId = bankId;
+       this.dbStatDate = dbStatDate;
+       this.dcClsDate = dcClsDate;
+       this.dcClsFlg = dcClsFlg;
+       this.defNumOfDaysInMth = defNumOfDaysInMth;
+       this.delFlg = delFlg;
+       this.groupDesc = groupDesc;
+       this.homeCntryCode = homeCntryCode;
+       this.homeCrncyCode = homeCrncyCode;
+       this.lchgTime = lchgTime;
+       this.lchgUserId = lchgUserId;
+       this.numOfBackDaysAllowed = numOfBackDaysAllowed;
+       this.numOfFutureDaysAllowed = numOfFutureDaysAllowed;
+       this.rcreTime = rcreTime;
+       this.rcreUserId = rcreUserId;   
+    }
    
     public long getSolGroupId() {
         return this.solGroupId;
