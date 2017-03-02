@@ -17,6 +17,7 @@ import java.util.Locale;
  *
  * @author Levi
  */
+
 public class CategoryService {
 
     HibernateUtilHelper hibernateUtilHelper = new HibernateUtilHelper();

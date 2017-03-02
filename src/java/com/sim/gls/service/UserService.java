@@ -241,15 +241,15 @@ public class UserService {
     }
 
     
-    //return
-    
-    public User getUserDetails(int userid) { 
-        List<UserCredsTbl> existing = crud.findByPrimaryKey(userid, "FROM UserCredsTbl where id =:pk");
-
-        User userDetail = null;
+    //return a list of Users
+    public List<User> getUserDetails(int userid) {
+        List<User> userList = new LinkedList<>();
+        User theUser = null;
+        List<UserCredsTbl> existing = crud.findByPrimaryKey(userid, "FROM UserCredsTbl where roleId =:pk");
         if (existing.size() > 0) {
-            UserCredsTbl userProf = existing.get(0);
-            userDetail = new User(
+            for (Object userObject : existing) {
+                UserCredsTbl userProf = (UserCredsTbl) userObject ;
+            theUser = new User(
                     userProf.getUserId(),
                     new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
                             userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
@@ -257,18 +257,22 @@ public class UserService {
                     userProf.getUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
                     userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw()
             );
+                
+                userList.add(theUser);
+
+            }
         }
-        return userDetail;
+        return userList;
+
     }
+ 
 
     public String lastOper(int userid) { 
         String res = "";
-        User user = getUserDetails(userid);
+         
 
-        res = user.getLastOper();
-
-        // UserCredsTblMod list = getuserModDetails(userid);
-        // res = list.getLastOper();
+         UserCredsTblMod list = (UserCredsTblMod) getuserModDetails(userid);
+         res = list.getLastOper();
         return res;
     }
 

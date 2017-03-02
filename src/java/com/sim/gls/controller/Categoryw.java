@@ -6,6 +6,9 @@
 package com.sim.gls.controller;
 
  
+ import com.sim.gls.model.Category;
+import com.sim.gls.service.BankService;
+import com.sim.gls.service.CategoryService;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -39,6 +42,8 @@ public class Categoryw {
     public static void handleMaintainCategory(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
+        CategoryService categoryService = new CategoryService();
+        BankService bankService = new BankService();
         session.setAttribute("catadded", false);
         session.setAttribute("catexists", false);
         if ((String) session.getAttribute("uname") != null) {
@@ -46,10 +51,20 @@ public class Categoryw {
             String categorytype = request.getParameter("categorytype");
             String categorycode = request.getParameter("categorycode");
             String categoryvalue = request.getParameter("categoryvalue");
+             
+              Category category = new Category();
+              category.setBankId(bankService.getBankId());
+              category.setBocreatedby((String) session.getAttribute("uname"));
+              category.setBodatecreated(new Date() );
+              category.setBomodifiedby((String) session.getAttribute("uname"));
+              category.setCategoryvalue(categoryvalue);
+              category.setCategorytype(categorytype);
+              category.setCategorycode(categorycode);
+              category.setBodatemodified(new Date());
             switch (function) {
                 case "ADD":
-                    if (!Category.categoryExists(categorycode, categorytype)) {
-                        Category.addCategories(Bank.getBankId(), categorycode, categorytype, categoryvalue, new Date(), (String) session.getAttribute("uname"), new Date(), (String) session.getAttribute("uname"));
+                    if (!categoryService.categoryExists(categorycode, categorytype)) {
+                        categoryService.addCategories(category);
                         session.setAttribute("catadded", true);
                         session.setAttribute("content_page", "categories/mCategories_a.jsp");
                     } else {

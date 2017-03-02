@@ -33,6 +33,20 @@ public class RoleService {
             return false;
         }
     }
+    //userExistsInMod
+    
+     public boolean userExistsInMod(String userName) {
+         boolean status= false;
+        String qr = "from UserCredsTblMod where userName like '%" + userName + "%'"
+                + "or userName like '%" + userName + "%'";
+        List userList = crud.getObject(qr);
+
+        if (userList.size() > 0) {
+            status =true;
+        } 
+      return  status;
+    }
+    
 
     /*
      Retrieves all Roles

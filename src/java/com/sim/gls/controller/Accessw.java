@@ -6,7 +6,11 @@
 package com.sim.gls.controller;
 
  
+import com.sim.gls.model.Role;
 import com.sim.gls.model.User;
+import com.sim.gls.security.Encode;
+import com.sim.gls.service.AccessService;
+import com.sim.gls.service.RoleService;
 import com.sim.gls.service.UserService;
 import java.io.IOException;
 import java.util.Date;
@@ -43,7 +47,7 @@ public class Accessw {
         if (userService.userExists(username)) {
             
             userId = userService.getUserId(username);
-             List<User> users = (List<User>) userService.getUserDetails(userId);
+             List<User> users =  userService.getUserDetails(userId);
             Encode enc = new Encode(Encode.generateUserKey(username, password), Encode.generateUserIV(username, password));
             Date currdate = new Date();
             int logattempts = 0;
@@ -54,32 +58,34 @@ public class Accessw {
             String newUsrFlg = "";
             int roleid = 0;
             String roleName = "";
-            for (UserCredsTbl us : users) {
-                logattempts = us.getNumPwdAttempts();
+            for (User us : users) {
+                logattempts = (int) us.getNumPwdAttempts();
                 pwdexpyDate = us.getPwExpyDate();
                 acctexpyDate = us.getAcctExpyDate();
                 disabledFromDate = us.getDisabledFromDate();
                 disableUptoDate = us.getDisabledUptoDate();
                 newUsrFlg = us.getNewUserFlg();
-                roleid = us.getRoleId();
+                roleid = (int) us.getRoleId();
             }
-            List<RoleProfileTable> roles = Role.getProfileDetails(roleid);
-            for (RoleProfileTable ro : roles) {
+            RoleService roleService = new RoleService();
+            List<Role> roles = roleService.getProfileDetails(roleid);
+            for (Role ro : roles) {
                 roleName = ro.getRoleDesc();
             }
-            if (!User.userExistsInMod(username)) {
+            AccessService acccessService = new  AccessService();
+            if (!roleService.userExistsInMod(username)) {
                 if (logattempts <= 3) {
                     if (!currdate.after(pwdexpyDate)) {
                         if (!currdate.after(acctexpyDate)) {
                             if ((disabledFromDate.before(currdate) && disableUptoDate.before(currdate)) || (disabledFromDate.after(currdate) && disableUptoDate.after(currdate))) {
-                                if (!Access.userIsLoggedIn(username)) {
-                                    if (Access.userExists(username, enc.encrypt(password))) {
+                                if (!AccessService.userIsLoggedIn(username)) {
+                                    if (acccessService.userExists(username, enc.encrypt(password))) {
                                         if (!newUsrFlg.equalsIgnoreCase("Y")) {
                                             session.setAttribute("uname", username.toUpperCase());
                                             session.setAttribute("role", roleName);
-                                            Access.loginUser(username, 0, new Date(), session.getId());
-                                            Access.enableUser(userId);
-                                            Access.markCorrectLoginAttempt(username);
+                                            acccessService.loginUser(username, "0", new Date(), session.getId());
+                                            acccessService.enableUser(userId);
+                                            acccessService.markCorrectLoginAttempt(username);
                                             session.setAttribute("content_page", "ucontent.jsp");
                                             response.sendRedirect("index.jsp");
                                         } else {
@@ -88,7 +94,7 @@ public class Accessw {
                                         }
                                     } else {
                                         session.setAttribute("userdnexists", true);
-                                        Access.markWrongLoginAttempt(username);
+                                        acccessService.markWrongLoginAttempt(username);
                                         session.setAttribute("content_page", "login.jsp");
                                         response.sendRedirect("login.jsp");
                                     }
@@ -135,9 +141,10 @@ public class Accessw {
 
     public static void handleLogout(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        AccessService acccessService = new  AccessService();
         HttpSession session = request.getSession(false);
         if (session.getAttribute("uname") != null) {
-            Access.logoutUser((String) session.getAttribute("uname"));
+            acccessService.logoutUser((String) session.getAttribute("uname"));
             session.setAttribute("content_page", "login.jsp");
             response.sendRedirect("login.jsp");
             session.invalidate();
