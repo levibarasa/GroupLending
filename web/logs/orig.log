@@ -1,0 +1,57 @@
+[origlogger] [14 Dec 2016 - 17:04:35] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [14 Dec 2016 - 17:04:36] [DEBUG][subgroup.SubGroup][executeaddSubGroup][531] - Sub-Group Id: 2226 Added Successfully 
+[origlogger] [14 Dec 2016 - 17:07:52] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [14 Dec 2016 - 17:18:09] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [14 Dec 2016 - 17:18:11] [DEBUG][subgroup.SubGroup][executeaddSubGroup][531] - Sub-Group Id: 2235 Added Successfully 
+[origlogger] [14 Dec 2016 - 17:22:36] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [14 Dec 2016 - 17:57:42] [DEBUG][customer.Customer][getUnMappedAccounts][61] - Unknown service requested [org.hibernate.stat.spi.StatisticsImplementor] 
+[origlogger] [14 Dec 2016 - 18:03:20] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [14 Dec 2016 - 18:03:22] [DEBUG][subgroup.SubGroup][executeaddSubGroup][531] - Sub-Group Id: 2284 Added Successfully 
+[origlogger] [14 Dec 2016 - 18:04:01] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [15 Dec 2016 - 10:52:08] [DEBUG][group.Groupw][handleMaintainGroup][100] - Unparseable date: "" 
+[origlogger] [15 Dec 2016 - 10:52:10] [DEBUG][group.Group][executeaddGroup][490] - Group Id: 2346 Added Successfully 
+[origlogger] [15 Dec 2016 - 12:36:42] [DEBUG][mext.Mext][getlinkedAccounts][221] - query did not return a unique result: 2 
+[origlogger] [15 Dec 2016 - 12:36:44] [DEBUG][mext.Mext][getlinkedAccounts][221] - query did not return a unique result: 2 
+[origlogger] [15 Dec 2016 - 12:36:50] [DEBUG][mext.Mext][getlinkedAccounts][221] - query did not return a unique result: 2 
+[origlogger] [15 Dec 2016 - 12:36:53] [DEBUG][mext.Mext][getlinkedAccounts][221] - query did not return a unique result: 2 
+[origlogger] [15 Dec 2016 - 12:47:30] [DEBUG][mext.Mext][getSubGrpCode][108] - query did not return a unique result: 4 
+[origlogger] [15 Dec 2016 - 12:58:58] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 12:58:58] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 13:07:00] [DEBUG][mext.Mext][getSubGrpCode][108] - query did not return a unique result: 4 
+[origlogger] [15 Dec 2016 - 15:00:54] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:00:54] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:02] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:02] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:17] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:17] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:27] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:01:27] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:04:15] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:04:15] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:05:14] [DEBUG][customer.Customer][completeVerification][652] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:05:14] [DEBUG][customer.Customer][verifyAccountDetails][548] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTable.acctType 
+[origlogger] [15 Dec 2016 - 15:09:50] [DEBUG][customer.Customer][addGamModDetails][368] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTableMod.acctType 
+[origlogger] [15 Dec 2016 - 15:09:50] [DEBUG][customer.Customer][getAccountDetails][347] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTableMod.acctType 
+[origlogger] [15 Dec 2016 - 15:11:00] [DEBUG][customer.Customer][addGamModDetails][368] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTableMod.acctType 
+[origlogger] [15 Dec 2016 - 15:11:00] [DEBUG][customer.Customer][getAccountDetails][347] - not-null property references a null or transient value : com.orig.gls.jpa.GeneralAcctMastTableMod.acctType 
+[origlogger] [15 Dec 2016 - 15:24:04] [DEBUG][group.Groupw][handleMaintainGroup][100] - Unparseable date: "" 
+[origlogger] [15 Dec 2016 - 15:24:07] [DEBUG][group.Group][executeaddGroup][490] - Group Id: 2430 Added Successfully 
+[origlogger] [15 Dec 2016 - 15:37:31] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
+[origlogger] [15 Dec 2016 - 15:37:33] [DEBUG][subgroup.SubGroup][executeaddSubGroup][531] - Sub-Group Id: 2433 Added Successfully 
+[origlogger] [15 Dec 2016 - 19:17:27] [DEBUG][user.User][userExists][44] - Could not open connection 
+[origlogger] [15 Dec 2016 - 19:22:30] [DEBUG][user.User][userExists][44] - Could not open connection 
+[origlogger] [16 Dec 2016 - 09:22:56] [DEBUG][role.Role][getProfileDetails][261] - could not extract ResultSet 
+[origlogger] [16 Dec 2016 - 09:27:48] [DEBUG][user.User][userExists][44] - Could not open connection 
+[origlogger] [16 Dec 2016 - 09:43:36] [DEBUG][customer.Customer][getUnMappedAccounts][61] - Could not open connection 
+[origlogger] [16 Dec 2016 - 10:16:00] [DEBUG][user.User][userExists][44] - Could not open connection 
+[origlogger] [16 Dec 2016 - 10:17:02] [DEBUG][user.User][userExists][44] - Could not open connection 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][reports.BeanFactory][getCustomerReport][42] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][subgroup.SubGroup][getAllSubGroups][347] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][group.Group][getAllGroups][314] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:24:06] [DEBUG][user.User][userExists][44] - could not prepare statement 
+[origlogger] [16 Dec 2016 - 10:47:05] [DEBUG][group.Group][getGroupId][109] - could not resolve property: groupId of: com.orig.gls.jpa.ServiceOutletTable 
