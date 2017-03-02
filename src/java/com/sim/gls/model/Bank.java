@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Bank {
 
-     private int solGroupId =0;
+     private long solGroupId =0;
      private String bankId ="";
      private Date dbStatDate = new Date();
      private Date dcClsDate = new Date();
@@ -31,7 +31,7 @@ public class Bank {
      private String rcreUserId =""; 
 
      public Bank(){}
-     public Bank(int solGroupId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, int numOfBackDaysAllowed, int numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
+     public Bank(long solGroupId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, int numOfBackDaysAllowed, int numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
        this.solGroupId = solGroupId;
        this.bankId = bankId;
        this.dbStatDate = dbStatDate;

@@ -57,6 +57,43 @@ public class GroupsTable  implements java.io.Serializable {
     public GroupsTable() {
     }
 
+     public GroupsTable(  String bankId, String branchName, String countryCode, String delFlg, Date firstMeetDate, Date formationDate, String gpRegion, String gpStatus, String gpStatusCode, String groupAddress, String groupCenter, String groupCode, double groupLoans, String groupName, String groupPhone, String groupType, String groupVillage, String grpMgrId, String grpRegNo, Date lchgDate, String lchgUserId, long loanAccounts, long maxAllowedMembers, long maxAllowedSubGrps, String meetFrequency, String meetPlace, long noOfMembers, long noOfSubGrps, Date nxtMeetDate, double outstandingBal, Date rcreTime, String rcreUserId, long savingAccounts, double savingsAmt, long solId) {
+         this.bankId = bankId;
+        this.branchName = branchName;
+        this.countryCode = countryCode;
+        this.delFlg = delFlg;
+        this.firstMeetDate = firstMeetDate;
+        this.formationDate = formationDate;
+        this.gpRegion = gpRegion;
+        this.gpStatus = gpStatus;
+        this.gpStatusCode = gpStatusCode;
+        this.groupAddress = groupAddress;
+        this.groupCenter = groupCenter;
+        this.groupCode = groupCode;
+        this.groupLoans = groupLoans;
+        this.groupName = groupName;
+        this.groupPhone = groupPhone;
+        this.groupType = groupType;
+        this.groupVillage = groupVillage;
+        this.grpMgrId = grpMgrId;
+        this.grpRegNo = grpRegNo;
+        this.lchgDate = lchgDate;
+        this.lchgUserId = lchgUserId;
+        this.loanAccounts = loanAccounts;
+        this.maxAllowedMembers = maxAllowedMembers;
+        this.maxAllowedSubGrps = maxAllowedSubGrps;
+        this.meetFrequency = meetFrequency;
+        this.meetPlace = meetPlace;
+        this.noOfMembers = noOfMembers;
+        this.noOfSubGrps = noOfSubGrps;
+        this.nxtMeetDate = nxtMeetDate;
+        this.outstandingBal = outstandingBal;
+        this.rcreTime = rcreTime;
+        this.rcreUserId = rcreUserId;
+        this.savingAccounts = savingAccounts;
+        this.savingsAmt = savingsAmt;
+        this.solId = solId;
+    }
 	
     public GroupsTable(long groupId, String bankId, String branchName, String countryCode, String delFlg, Date firstMeetDate, Date formationDate, String gpRegion, String gpStatus, String gpStatusCode, String groupAddress, String groupCenter, String groupCode, double groupLoans, String groupName, String groupPhone, String groupType, String groupVillage, String grpMgrId, String grpRegNo, Date lchgDate, String lchgUserId, long loanAccounts, long maxAllowedMembers, long maxAllowedSubGrps, String meetFrequency, String meetPlace, long noOfMembers, long noOfSubGrps, Date nxtMeetDate, double outstandingBal, Date rcreTime, String rcreUserId, long savingAccounts, double savingsAmt, long solId) {
         this.groupId = groupId;
@@ -139,6 +176,42 @@ public class GroupsTable  implements java.io.Serializable {
        this.solId = solId;
        this.subGrpTables = subGrpTables;
     }
+
+    public GroupsTable(String bankId, String branchName, String countryCode, String delFlg, Date firstMeetDate, Date formationDate, String gpRegion, String gpStatus, String gpStatusCode, String groupAddress, String groupCenter, String groupCode, double groupLoans, String groupName, String groupPhone, String groupVillage, String grpMgrId, String grpRegNo, Date lchgDate, String lchgUserId, int loanAccounts, int maxAllowedMembers, int maxAllowedSubGrps, String meetFrequency, String meetPlace, int noOfMembers, int noOfSubGrps, Date nxtMeetDate, double outstandingBal, Date rcreTime, String rcreUserId, int savingAccounts, double savingsAmt, int solId) {
+         this.bankId = bankId;
+        this.branchName = branchName;
+        this.countryCode = countryCode;
+        this.delFlg = delFlg;
+        this.firstMeetDate = firstMeetDate;
+        this.formationDate = formationDate;
+        this.gpRegion = gpRegion;
+        this.gpStatus = gpStatus;
+        this.gpStatusCode = gpStatusCode;
+        this.groupAddress = groupAddress;
+        this.groupCenter = groupCenter;
+        this.groupCode = groupCode;
+        this.groupLoans = groupLoans;
+        this.groupName = groupName;
+        this.groupPhone = groupPhone; 
+        this.groupVillage = groupVillage;
+        this.grpMgrId = grpMgrId;
+        this.grpRegNo = grpRegNo;
+        this.lchgDate = lchgDate;
+        this.lchgUserId = lchgUserId;
+        this.loanAccounts = loanAccounts;
+        this.maxAllowedMembers = maxAllowedMembers;
+        this.maxAllowedSubGrps = maxAllowedSubGrps;
+        this.meetFrequency = meetFrequency;
+        this.meetPlace = meetPlace;
+        this.noOfMembers = noOfMembers;
+        this.noOfSubGrps = noOfSubGrps;
+        this.nxtMeetDate = nxtMeetDate;
+        this.outstandingBal = outstandingBal;
+        this.rcreTime = rcreTime;
+        this.rcreUserId = rcreUserId;
+        this.savingAccounts = savingAccounts;
+        this.savingsAmt = savingsAmt;
+        this.solId = solId; }
    
     public long getGroupId() {
         return this.groupId;

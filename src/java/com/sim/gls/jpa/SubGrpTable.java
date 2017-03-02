@@ -135,6 +135,40 @@ public class SubGrpTable  implements java.io.Serializable {
        this.subGrpMgrId = subGrpMgrId;
        this.subGrpRegNo = subGrpRegNo;
     }
+
+    public SubGrpTable(String bankId, String branchName, String countryCode, String delFlg, Date firstMeetDate, Date formationDate, int groupId, Date lchgDate, String lchgUserId, int loanAccounts, int maxAllowedMembers, String meetFrequency, String meetPlace, int noOfMembers, Date nxtMeetDate, double outstandingBal, Date rcreTime, String rcreUserId, int savingAccounts, double savingsAmt, int solId, String subGpRegion, String subGpStatus, String subGpStatusCode, String subGroupAddress, String subGroupCenter, String subgroupCode, double subGroupLoans, String subGroupName, String subGroupPhone, String subGroupVillage, String subGrpMgrId, String subGrpRegNo) {
+        this.bankId = bankId;
+        this.branchName = branchName;
+        this.countryCode = countryCode;
+        this.delFlg = delFlg;
+        this.firstMeetDate = firstMeetDate;
+        this.formationDate = formationDate;
+        this.lchgDate = lchgDate;
+        this.lchgUserId = lchgUserId;
+        this.loanAccounts = loanAccounts;
+        this.maxAllowedMembers = maxAllowedMembers;
+        this.meetFrequency = meetFrequency;
+        this.meetPlace = meetPlace;
+        this.noOfMembers = noOfMembers;
+        this.nxtMeetDate = nxtMeetDate;
+        this.outstandingBal = outstandingBal;
+        this.rcreTime = rcreTime;
+        this.rcreUserId = rcreUserId;
+        this.savingAccounts = savingAccounts;
+        this.savingsAmt = savingsAmt;
+        this.solId = solId;
+        this.subGpRegion = subGpRegion;
+        this.subGpStatus = subGpStatus;
+        this.subGpStatusCode = subGpStatusCode;
+        this.subGroupAddress = subGroupAddress;
+        this.subGroupCenter = subGroupCenter;
+         this.subGroupLoans = subGroupLoans;
+        this.subGroupName = subGroupName;
+        this.subGroupPhone = subGroupPhone;
+        this.subGroupVillage = subGroupVillage;
+         this.subGrpMgrId = subGrpMgrId;
+        this.subGrpRegNo = subGrpRegNo;
+    }
    
     public long getSubGroupId() {
         return this.subGroupId;

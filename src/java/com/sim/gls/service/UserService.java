@@ -74,17 +74,60 @@ public class UserService {
         return roleId;
     }
 
-    public UserCredsTbl getuserDetails(int userId) {
-        List users = crud.getObjectLazyLoad("from UserCredsTbl where userId =" + userId);
-        return (UserCredsTbl) users.get(0);
+    public List<User> getuserDetails(int userId) {
+        List<User> userList = new LinkedList<>();
+        User theUser = null;
+        List<UserCredsTbl> existing = crud.findByPrimaryKey(userId, "FROM UserCredsTbl where userId =:pk");
+        if (existing.size() > 0) {
+            for (Object userObject : existing) {
+                UserCredsTbl userProf = (UserCredsTbl) userObject;
+                theUser = new User(
+                        userProf.getUserId(),
+                        new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                                userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                        userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getSolId(), userProf.getLastAccessTime(),
+                        userProf.getLchgUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                        userProf.getPwdHistory(), userProf.getRoleId(), userProf.getUserName(), userProf.getUserPw(), userProf.getUserStatus()
+                );
+
+                userList.add(theUser);
+
+            }
+        }
+        return userList;
+
     }
 
-//shouldnt be  a list of users because userid is the primarykey 
-    public UserCredsTblMod getuserModDetails(int userId) {
-        List mod_users = crud.getObjectLazyLoad("from UserCredsTblMod where userId =" + userId);
-        return (UserCredsTblMod) mod_users.get(0);
-    }
+////shouldnt be  a list of users because userid is the primarykey 
+//    public UserCredsTblMod getuserModDetails(int userId) {
+//        List mod_users = crud.getObjectLazyLoad("from UserCredsTblMod where userId =" + userId);
+//        return (UserCredsTblMod) mod_users.get(0);
+//    }
+ public List<User> getuserModDetails(int userId) {
+        List<User> userList = new LinkedList<>();
+        User theUser = null;
+        List<UserCredsTblMod> existing = crud.findByPrimaryKey(userId, "FROM UserCredsTblMod where userId =:pk");
+        if (existing.size() > 0) {
+            for (Object userObject : existing) {
+                UserCredsTblMod userProf = (UserCredsTblMod) userObject;
+                theUser = new User(
+                        userProf.getUserId(),
+                        new Role(userProf.getRoleProfileTable().getBankId(), userProf.getRoleProfileTable().getDelFlg(), userProf.getRoleProfileTable().getEntityCreFlg(), userProf.getRoleProfileTable().getLchgTime(),
+                                userProf.getRoleProfileTable().getLchgUserId(), userProf.getRoleProfileTable().getRcreTime(), userProf.getRoleProfileTable().getRcreUserId(), userProf.getRoleProfileTable().getRoleDesc()), userProf.getAcctExpyDate(), userProf.getAcctInactiveDays(),
+                        userProf.getDisabledFromDate(), userProf.getDisabledUptoDate(), userProf.getRoleProfileTable().getBankId(), userProf.getLastAccessTime(),
+                        userProf.getRoleProfileTable().getLchgUserId(), userProf.getNewUserFlg(), userProf.getNumPwdAttempts(), userProf.getNumPwdHistory(), userProf.getPwExpyDate(),
+                        userProf.getPwdHistory(), userProf.getRoleProfileTable().getRoleId(), userProf.getUserName(), userProf.getUserPw(), userProf.getRoleProfileTable().getUserCredsTbl().getUserStatus()
+                );
 
+                userList.add(theUser);
+
+            }
+        }
+        return userList;
+
+    }
+    
+    
     public int createUser(User user) {
         UserCredsTbl created = new UserCredsTbl(user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
                 user.getDisabledUptoDate(), user.getLastAccessTime(), user.getNewUserFlg(), user.getNumPwdAttempts(),
@@ -100,7 +143,7 @@ public class UserService {
                 = new UserCredsTblMod(roleProf, user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
                         user.getDisabledUptoDate(), user.getLastAccessTime(), user.getLastOper(), user.getNewUserFlg(), user.getNumPwdAttempts(),
                         user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), "U", userId, user.getUserName(), EncodeUserPassword(user.getUserName(), user.getUserPw()), true);
-        crud.save(user);
+        crud.save(creatUserMod);
         return 0;
     }
 
@@ -301,14 +344,13 @@ public class UserService {
 
     public void modifyUser(User user) {
         List<UserCredsTbl> existing = crud.findByPrimaryKey(user.getUserId(), "from UserCredsTbl where id =:pk ");
-        UserCredsTbl updated = new UserCredsTbl( user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
+        UserCredsTbl updated = new UserCredsTbl(user.getAcctExpyDate(), user.getAcctInactiveDays(), user.getDisabledFromDate(),
                 user.getDisabledUptoDate(), user.getLastAccessTime(), user.getNewUserFlg(), user.getNumPwdAttempts(),
                 user.getNumPwdHistory(), user.getPwExpyDate(), user.getPwdHistory(), user.getRole().getRoleId(),
                 user.getUserName(), EncodeUserPassword(user.getUserName(), user.getUserPw()), user.getUserStatus());
         crud.saveOrUpdate(user);
 
     }
-
 
     public static void markUserUnverified(int userName, String userStatus) {
         Session session = HibernateUtil.getSessionFactory().openSession();

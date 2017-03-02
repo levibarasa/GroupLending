@@ -16,22 +16,22 @@ public class SolGroupControlTable  implements java.io.Serializable {
      private Date dbStatDate;
      private Date dcClsDate;
      private String dcClsFlg;
-     private long defNumOfDaysInMth;
+     private int defNumOfDaysInMth;
      private String delFlg;
      private String groupDesc;
      private String homeCntryCode;
      private String homeCrncyCode;
      private Date lchgTime;
      private String lchgUserId;
-     private long numOfBackDaysAllowed;
-     private long numOfFutureDaysAllowed;
+     private int numOfBackDaysAllowed;
+     private int numOfFutureDaysAllowed;
      private Date rcreTime;
      private String rcreUserId;
 
     public SolGroupControlTable() {
     }
 
-    public SolGroupControlTable( String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, long defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, long numOfBackDaysAllowed, long numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
+    public SolGroupControlTable( String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, int numOfBackDaysAllowed, int numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
          this.bankId = bankId;
        this.dbStatDate = dbStatDate;
        this.dcClsDate = dcClsDate;
@@ -48,7 +48,7 @@ public class SolGroupControlTable  implements java.io.Serializable {
        this.rcreTime = rcreTime;
        this.rcreUserId = rcreUserId;
     }
-    public SolGroupControlTable(long solGroupId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, long defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, long numOfBackDaysAllowed, long numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
+    public SolGroupControlTable(long solGroupId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, int numOfBackDaysAllowed, int numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
        this.solGroupId = solGroupId;
        this.bankId = bankId;
        this.dbStatDate = dbStatDate;
@@ -102,11 +102,11 @@ public class SolGroupControlTable  implements java.io.Serializable {
     public void setDcClsFlg(String dcClsFlg) {
         this.dcClsFlg = dcClsFlg;
     }
-    public long getDefNumOfDaysInMth() {
+    public int getDefNumOfDaysInMth() {
         return this.defNumOfDaysInMth;
     }
     
-    public void setDefNumOfDaysInMth(long defNumOfDaysInMth) {
+    public void setDefNumOfDaysInMth(int defNumOfDaysInMth) {
         this.defNumOfDaysInMth = defNumOfDaysInMth;
     }
     public String getDelFlg() {
@@ -151,18 +151,18 @@ public class SolGroupControlTable  implements java.io.Serializable {
     public void setLchgUserId(String lchgUserId) {
         this.lchgUserId = lchgUserId;
     }
-    public long getNumOfBackDaysAllowed() {
+    public int getNumOfBackDaysAllowed() {
         return this.numOfBackDaysAllowed;
     }
     
-    public void setNumOfBackDaysAllowed(long numOfBackDaysAllowed) {
+    public void setNumOfBackDaysAllowed(int numOfBackDaysAllowed) {
         this.numOfBackDaysAllowed = numOfBackDaysAllowed;
     }
-    public long getNumOfFutureDaysAllowed() {
+    public int getNumOfFutureDaysAllowed() {
         return this.numOfFutureDaysAllowed;
     }
     
-    public void setNumOfFutureDaysAllowed(long numOfFutureDaysAllowed) {
+    public void setNumOfFutureDaysAllowed(int numOfFutureDaysAllowed) {
         this.numOfFutureDaysAllowed = numOfFutureDaysAllowed;
     }
     public Date getRcreTime() {

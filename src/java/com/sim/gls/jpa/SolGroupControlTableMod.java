@@ -16,7 +16,7 @@ public class SolGroupControlTableMod  implements java.io.Serializable {
      private Date dbStatDate;
      private Date dcClsDate;
      private String dcClsFlg;
-     private long defNumOfDaysInMth;
+     private int defNumOfDaysInMth;
      private String delFlg;
      private String groupDesc;
      private String homeCntryCode;
@@ -31,7 +31,7 @@ public class SolGroupControlTableMod  implements java.io.Serializable {
     public SolGroupControlTableMod() {
     }
 
-    public SolGroupControlTableMod(long solGroupId, long modId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, long defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, long numOfBackDaysAllowed, long numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
+    public SolGroupControlTableMod(long solGroupId, long modId, String bankId, Date dbStatDate, Date dcClsDate, String dcClsFlg, int defNumOfDaysInMth, String delFlg, String groupDesc, String homeCntryCode, String homeCrncyCode, Date lchgTime, String lchgUserId, long numOfBackDaysAllowed, long numOfFutureDaysAllowed, Date rcreTime, String rcreUserId) {
        this.solGroupId = solGroupId;
        this.modId = modId;
        this.bankId = bankId;
@@ -113,11 +113,11 @@ public class SolGroupControlTableMod  implements java.io.Serializable {
     public void setDcClsFlg(String dcClsFlg) {
         this.dcClsFlg = dcClsFlg;
     }
-    public long getDefNumOfDaysInMth() {
+    public int getDefNumOfDaysInMth() {
         return this.defNumOfDaysInMth;
     }
     
-    public void setDefNumOfDaysInMth(long defNumOfDaysInMth) {
+    public void setDefNumOfDaysInMth(int defNumOfDaysInMth) {
         this.defNumOfDaysInMth = defNumOfDaysInMth;
     }
     public String getDelFlg() {

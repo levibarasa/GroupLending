@@ -6,14 +6,11 @@ import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Bank;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
+import org.apache.commons.logging.LogFactory; 
 
 /**
  *
@@ -46,13 +43,30 @@ public class BankService {
         return b.getBankId();
     }
 
-    public SolGroupControlTable getBankDetails(String bankId) {
-        List solGroup = crud.getObjectLazyLoad("from SolGroupControlTable where bankId =" + bankId);
-        return (SolGroupControlTable) solGroup.get(0);
-    }
+     public List<Bank> getBankDetails(String bankId) {
+        List<Bank> bankList = new LinkedList<>();
+        Bank theBank = null;
+        String query = "from SolGroupControlTable where bankId like '%" + bankId + "%'"
+                + "or solGroupId like '%" + bankId + "%'";
+        List<Object> existing = crud.getObject(query);
+          if (existing.size() > 0) {
+            for (Object bankObject : existing) {
+                SolGroupControlTable groupControlTable = (SolGroupControlTable) bankObject;
+                theBank = new Bank(groupControlTable.getSolGroupId(),groupControlTable.getBankId(), groupControlTable.getDbStatDate(),groupControlTable.getDcClsDate(),groupControlTable.getDcClsFlg(),groupControlTable.getDefNumOfDaysInMth(),groupControlTable.getDelFlg(), groupControlTable.getGroupDesc(),groupControlTable.getHomeCntryCode(),groupControlTable.getHomeCrncyCode(),groupControlTable.getLchgTime(),groupControlTable.getLchgUserId(),groupControlTable.getNumOfBackDaysAllowed(),groupControlTable.getNumOfFutureDaysAllowed(),groupControlTable.getRcreTime(),groupControlTable.getRcreUserId()
+                      );
+                 bankList.add(theBank);
+            }
+        }
+        return bankList;
 
+    }
     public int addbankEntity(Bank bank) {
-        SolGroupControlTable saved = new SolGroupControlTable(bank.getBankId(), bank.getDbStatDate(), bank.getDcClsDate(), bank.getDcClsFlg(), bank.getDefNumOfDaysInMth(), bank.getDelFlg(), bank.getGroupDesc(), bank.getHomeCntryCode(), bank.getHomeCrncyCode(), bank.getLchgTime(), bank.getLchgUserId(), bank.getNumOfBackDaysAllowed(), bank.getNumOfFutureDaysAllowed(), bank.getRcreTime(), bank.getRcreUserId());
+        SolGroupControlTable saved = new SolGroupControlTable(bank.getBankId(), bank.getDbStatDate(), bank.getDcClsDate(), bank.getDcClsFlg(), 
+                bank.getDefNumOfDaysInMth(), bank.getDelFlg(), bank.getGroupDesc(), bank.getHomeCntryCode(), bank.getHomeCrncyCode(), bank.getLchgTime(),
+                bank.getLchgUserId(),
+                bank.getNumOfBackDaysAllowed(), 
+                bank.getNumOfFutureDaysAllowed(), 
+                bank.getRcreTime(), bank.getRcreUserId());
         int solgroupId = (int) crud.save(saved);
         return solgroupId;
     }

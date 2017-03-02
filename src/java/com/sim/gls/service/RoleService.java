@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sim.gls.service;
 
 import com.sim.gls.jpa.RoleProfileTable;
@@ -10,8 +5,7 @@ import com.sim.gls.jpa.RoleProfileTableMod;
 import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Role;
-import com.sim.gls.model.UnVerifiedRole;
-import com.sim.gls.util.App;
+import com.sim.gls.model.UnVerifiedRole; 
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,54 +22,56 @@ public class RoleService {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-YYYY", Locale.getDefault());
 
     /*
-    Checks if Role exists
+     Checks if Role exists
      */
     public boolean roleExists(String roleDesc) {
         List roleProfileTable = crud.getObject("from RoleProfileTable where roleDesc =" + roleDesc);
         if (roleProfileTable.size() > 0) {
             return true;
-        }else{
-        return false;
+        } else {
+            return false;
         }
     }
 
     /*
-    Retrieves all Roles
+     Retrieves all Roles
      */
     public List<Role> getAllRoles() {
         List<Role> allRoles = new LinkedList<>();
         String query = "";
         List<Object> roles = crud.getObject("FROM RoleProfileTable");
+        if (roles.size() > 0) {
+            for (Object roleObject : roles) {
+                RoleProfileTable roleProf = (RoleProfileTable) roleObject;
+                Role role = new Role(roleProf.getBankId(), roleProf.getDelFlg(), roleProf.getEntityCreFlg(), roleProf.getLchgTime(),
+                        roleProf.getLchgUserId(), roleProf.getRcreTime(), roleProf.getRcreUserId(), roleProf.getRoleDesc());
+                allRoles.add(role);
 
-        for (Object roleObject : roles) {
-            RoleProfileTable roleProf = (RoleProfileTable) roleObject;
-            Role role = new Role(roleProf.getBankId(), roleProf.getDelFlg(), roleProf.getEntityCreFlg(),  roleProf.getLchgTime() ,
-                    roleProf.getLchgUserId(),  roleProf.getRcreTime(), roleProf.getRcreUserId(), roleProf.getRoleDesc());
-            allRoles.add(role);
-
+            }
         }
         return allRoles;
     }
 
     /*
-    Retrieves Unverified Roles
+     Retrieves Unverified Roles
      */
     public List<UnVerifiedRole> getUnverifiedRoles() {
         List<UnVerifiedRole> unVerifiedRoles = new LinkedList<>();
         String query = "";
         List<Object> uRoles = crud.getObject("FROM RoleProfileTableMod");
+        if (uRoles.size() > 0) {
+            for (Object uRoleObject : uRoles) {
+                RoleProfileTableMod uRoleProf = (RoleProfileTableMod) uRoleObject;
+                UnVerifiedRole uRole = new UnVerifiedRole(uRoleProf.getModId(), uRoleProf.getBankId(), uRoleProf.getDelFlg(), uRoleProf.getEntityCreFlg(), uRoleProf.getLchgTime(), uRoleProf.getLchgUserId(), uRoleProf.getRcreTime(), uRoleProf.getRcreUserId(), uRoleProf.getRoleDesc(), uRoleProf.getRoleId());
+                unVerifiedRoles.add(uRole);
 
-        for (Object uRoleObject : uRoles) {
-            RoleProfileTableMod uRoleProf = (RoleProfileTableMod) uRoleObject;
-            UnVerifiedRole uRole = new UnVerifiedRole(uRoleProf.getModId(), uRoleProf.getBankId(), uRoleProf.getDelFlg(), uRoleProf.getEntityCreFlg(), uRoleProf.getLchgTime(), uRoleProf.getLchgUserId(), uRoleProf.getRcreTime(), uRoleProf.getRcreUserId(), uRoleProf.getRoleDesc(), uRoleProf.getRoleId());
-            unVerifiedRoles.add(uRole);
-
+            }
         }
         return unVerifiedRoles;
     }
 
     /*
-    Retrives Role By ID
+         Retrives Role By ID
      */
     public Role getRole(int id) {
         List<RoleProfileTable> existing = crud.findByPrimaryKey(id, "FROM RoleProfileTable where id =:pk");
@@ -89,9 +85,8 @@ public class RoleService {
         return theRole;
     }
 
-    
     /*
-    Retrievs Unverified Role By Id
+     Retrievs Unverified Role By Id
      */
     public UnVerifiedRole getModRole(int id) {
         List<RoleProfileTableMod> existing = crud.findByPrimaryKey(id, "FROM RoleProfileTableMod where id =:pk");
@@ -105,7 +100,7 @@ public class RoleService {
     }
 
     /*
-    Deletes Role
+     Deletes Role
      */
     public void deleteRole(int roleId) {
         Role role = getRole(roleId);
@@ -113,7 +108,7 @@ public class RoleService {
     }
 
     /*
-    Deletes Unverified Role
+     Deletes Unverified Role
      */
     public void deleteModRole(int roleId) {
         UnVerifiedRole role = getModRole(roleId);
@@ -121,7 +116,7 @@ public class RoleService {
     }
 
     /*
-    Creates a New Role
+     Creates a New Role
      */
     public int addRole(Role roles) {
         RoleProfileTable created = new RoleProfileTable(roles.getBankId(), roles.getDelFlg(), roles.getEntityCreFlg(), roles.getLchgTime(), roles.getLchgUserId(), roles.getRcreTime(), roles.getRcreUserId(), roles.getRoleDesc());
@@ -131,9 +126,9 @@ public class RoleService {
     }
 
     /*
-    Creates A new Unverified Role
+     Creates A new Unverified Role
      */
-    public UnVerifiedRole addModRole(Role uRole, int roleId) { 
+    public UnVerifiedRole addModRole(Role uRole, int roleId) {
         RoleProfileTableMod created
                 = new RoleProfileTableMod(
                         uRole.getBankId(), uRole.getDelFlg(), uRole.getEntityCreFlg(), uRole.getLchgTime(),
@@ -147,9 +142,21 @@ public class RoleService {
         addModRole(role, roleId);
     }
 
-    public RoleProfileTable getProfileDetails(int roleId) {
-        List profList = crud.getObjectLazyLoad("from RoleProfileTable where roleId =" + roleId);
-        return (RoleProfileTable) profList.get(0);
+    public List<Role> getProfileDetails(int roleId) {
+        List<Role> roleList = new LinkedList<>();
+        Role theRole = null;
+        List<RoleProfileTable> existing = crud.findByPrimaryKey(roleId, "FROM RoleProfileTable where roleId =:pk");
+        if (existing.size() > 0) {
+            for (Object roleObject : existing) {
+                RoleProfileTable roleProf = (RoleProfileTable) roleObject;
+                theRole = new Role(roleProf.getBankId(), roleProf.getDelFlg(), roleProf.getEntityCreFlg(), roleProf.getLchgTime(),
+                        roleProf.getLchgUserId(), roleProf.getRcreTime(), roleProf.getRcreUserId(), roleProf.getRoleDesc());
+                roleList.add(theRole);
+
+            }
+        }
+        return roleList;
+
     }
 
     public RoleProfileTableMod getModProfileDetails(int roleId) {
@@ -175,12 +182,13 @@ public class RoleService {
         List<Object> roleIdList = crud.getObject(query);
         if (roleIdList.size() > 0) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public static void main(String[] args) {
- 
+
         RoleService roleService = new RoleService();
         for (Object userObject : roleService.getAllRoles()) {
             Role tlUser = (Role) userObject;
