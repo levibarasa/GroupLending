@@ -9,8 +9,8 @@ import com.sim.gls.jpa.ServiceOutletTable;
 import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Branch;
+
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;

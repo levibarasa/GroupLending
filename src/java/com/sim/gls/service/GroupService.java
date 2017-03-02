@@ -8,15 +8,11 @@ package com.sim.gls.service;
 /**
  *
  * @author Levi
- */ 
+ */
+
 import com.sim.gls.jpa.GroupsTable;
 import com.sim.gls.jpa.GroupsTableMod;
 import com.sim.gls.manager.HibernateUtil;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
@@ -27,6 +23,12 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 public class GroupService {
     
 

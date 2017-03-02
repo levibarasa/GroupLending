@@ -4,13 +4,14 @@ import com.sim.gls.jpa.Categories;
 import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Category;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *

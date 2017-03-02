@@ -5,7 +5,8 @@ import com.sim.gls.jpa.RoleProfileTableMod;
 import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Role;
-import com.sim.gls.model.UnVerifiedRole; 
+import com.sim.gls.model.UnVerifiedRole;
+
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;

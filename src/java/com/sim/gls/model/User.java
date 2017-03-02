@@ -5,7 +5,6 @@
  */
 package com.sim.gls.model;
 
-import com.sim.gls.jpa.RoleProfileTable;
 import java.util.Date;
 
 /**

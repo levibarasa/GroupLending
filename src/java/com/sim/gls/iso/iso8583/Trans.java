@@ -5,11 +5,6 @@
  */
 package com.sim.gls.iso.iso8583;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOChannel;
 import org.jpos.iso.ISOException;
@@ -17,6 +12,12 @@ import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOResponseListener;
 import org.jpos.iso.channel.ASCIIChannel;
 import org.jpos.iso.packager.GenericPackager;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 /**
  *
  * @author Levi

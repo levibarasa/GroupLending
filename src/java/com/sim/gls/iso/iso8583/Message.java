@@ -5,11 +5,12 @@
  */
 package com.sim.gls.iso.iso8583;
 
-import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.packager.GenericPackager;
+
+import java.io.InputStream;
 /**
  *
  * @author Levi

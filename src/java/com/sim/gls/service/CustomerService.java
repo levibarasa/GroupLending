@@ -1,16 +1,10 @@
 package com.sim.gls.service;
- 
+
 import com.sim.gls.jpa.GeneralAcctMastTable;
 import com.sim.gls.jpa.GeneralAcctMastTableMod;
 import com.sim.gls.jpa.GroupsTable;
 import com.sim.gls.jpa.SubGrpTable;
 import com.sim.gls.manager.HibernateUtil;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
@@ -19,6 +13,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class CustomerService {
 

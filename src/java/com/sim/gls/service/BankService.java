@@ -5,12 +5,13 @@ import com.sim.gls.jpa.SolGroupControlTableMod;
 import com.sim.gls.manager.CRUD;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Bank;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory; 
 
 /**
  *

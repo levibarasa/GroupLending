@@ -8,16 +8,17 @@ import com.sim.gls.manager.HibernateUtil;
 import com.sim.gls.manager.HibernateUtilHelper;
 import com.sim.gls.model.Role;
 import com.sim.gls.model.User;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import org.hibernate.criterion.Projections;
 
 /**
  *
@@ -203,5 +204,25 @@ public class AccessService {
         } finally {
             session.close();
         }
+    }
+    public static boolean userIsLoggedIn(String userName) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        long count = 0;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(LoggedInUser.class);
+            cr.add(Restrictions.eq("userName", userName));
+            count = (Long) cr.setProjection(Projections.rowCount()).uniqueResult();
+            tx.commit();
+        } catch (Exception asd) {
+            System.out.println(asd.getMessage());
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return count > 0;
     }
 }

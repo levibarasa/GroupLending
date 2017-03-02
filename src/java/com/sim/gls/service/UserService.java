@@ -10,21 +10,21 @@ import com.sim.gls.model.Role;
 import com.sim.gls.model.User;
 import com.sim.gls.prop.GlsProp;
 import com.sim.gls.security.Encode;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 import org.hibernate.Criteria;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -40,9 +40,9 @@ public class UserService {
     /*
     Checks if User exists
      */
-    public boolean userExists(String userName, String userPw) {
+    public boolean userExists(String userName) {
         String qr = "from UserCredsTbl where userName like '%" + userName + "%'"
-                + "or userPw like '%" + userPw + "%'";
+                + "or userName like '%" + userName + "%'";
         List userList = crud.getObject(qr);
 
         if (userList.size() > 0) {
@@ -240,8 +240,10 @@ public class UserService {
         return allVerifiedUsers;
     }
 
-    public User getUserDetails(String in) {
-        int userid = Integer.parseInt(in);
+    
+    //return
+    
+    public User getUserDetails(int userid) { 
         List<UserCredsTbl> existing = crud.findByPrimaryKey(userid, "FROM UserCredsTbl where id =:pk");
 
         User userDetail = null;
@@ -259,10 +261,9 @@ public class UserService {
         return userDetail;
     }
 
-    public String lastOper(String in) {
-        int userid = Integer.parseInt(in);
+    public String lastOper(int userid) { 
         String res = "";
-        User user = getUserDetails(in);
+        User user = getUserDetails(userid);
 
         res = user.getLastOper();
 

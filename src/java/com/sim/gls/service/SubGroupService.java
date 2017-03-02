@@ -3,12 +3,7 @@ package com.sim.gls.service;
 import com.sim.gls.jpa.GroupsTable;
 import com.sim.gls.jpa.SubGrpTable;
 import com.sim.gls.jpa.SubGrpTableMod;
-import com.sim.gls.manager.HibernateUtil; 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import com.sim.gls.manager.HibernateUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
@@ -19,6 +14,12 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  *
